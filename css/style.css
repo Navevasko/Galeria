@@ -23,7 +23,7 @@ header {
     justify-content: center;
 }
 
-#galeria-container {
+.galeria-container {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -80,7 +80,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: teal;
 }
 
 .slide .imagem-container img {
