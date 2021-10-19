@@ -1,16 +1,36 @@
 "use strict"
 
-const imagens = [
-    "https://noticias.maisesports.com.br/wp-content/uploads/2021/10/LoL-Blitzcrank-Vitorioso-scaled.jpg",
-    "./img/Paisagem1.jpg",
-    "./img/Paisagem2.jpg",
-    "./img/Paisagem3.jpg",
-    "./img/Paisagem4.jpg",
-    "./img/Paisagem5.jpg",
-    "./img/Paisagem6.jpg",
-    "./img/Paisagem7.jpg",
-    "./img/Paisagem8.jpg"
-]
+
+const limparElementos= (elemento) => {
+    while (elemento.firstChild) {
+        elemento.removeChild(elemento.lastChild)
+    }
+}
+
+const pesquisarImagens = async (evento) => {
+    
+    if(evento.key === "Enter"){
+        const raca =  evento.target.value
+        const url = `https://dog.ceo/api/breed/${raca}/images`
+        const imagensResponse = await fetch(url)
+        if(imagensResponse.ok) {
+            const imagens = await imagensResponse.json()
+
+            console.log(imagens)
+
+            limparElementos(document.querySelector('.galeria-container'))
+            limparElementos(document.querySelector('.slide-container'))
+
+            carregarGaleria(imagens.message)
+            carregarSlides(imagens.message)
+        }
+
+        else {
+            alert('Erro: A raça digitada não foi encontrada')
+        }
+        
+    }
+}
 
 const filtrarId = (urlImagem) => {
     const ultimaBarra = urlImagem.lastIndexOf("/") + 1
@@ -66,6 +86,5 @@ const criarSlide = (urlImagem, indice, array) => {
 const carregarGaleria = (imgs) => imgs.forEach(criarItem)
 const carregarSlides = (imgs) => imgs.forEach(criarSlide)
 
-
-carregarGaleria(imagens)
-carregarSlides(imagens)
+document.querySelector('.pesquisa-container input')
+        .addEventListener('keypress', pesquisarImagens)

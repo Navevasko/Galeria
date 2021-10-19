@@ -37,6 +37,7 @@ header {
     margin-top: 15px;
     overflow: hidden;
     border: 10px solid white;
+    border-radius: 15px;
 }
 
 .galeria-itens img {
@@ -75,17 +76,11 @@ header {
 
 .slide .imagem-container {
     position: relative;
-    height: 90%;
-    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.slide .imagem-container img {
-    width: 100%;
-    height: 100%;
-}
 
 .slide .fechar {
     position: absolute;
@@ -112,17 +107,23 @@ header {
 .slide .navegacao {
     position: absolute;
     width: 40px;
-    height: 100%;
+    height: 50%;
+    border-radius: 15px 0px 0px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    color: wheat;
-    background-color: #0008;
+    color: black;
+    background-color: #FFF8;
     text-decoration: none;
     opacity: 0;
     transition: 0.5s;
 }
+
+.slide .navegacao:nth-child(2) {
+    border-radius: 0px 15px 15px 0px;
+}
+
 
 .slide .navegacao:hover{
     opacity: 1;
@@ -146,4 +147,25 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: wheat;
+}
+
+.pesquisa-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pesquisa-container input {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 800px;
+    height: 50px;
+    color: black;
+    font-size: 1.2em;
+    border-radius: 25px;
+    outline: none;
+    padding: 0 24px;
 }
